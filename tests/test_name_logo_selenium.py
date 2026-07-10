@@ -2,6 +2,7 @@
 Make sure you have the dependencies installed:
 python -m pip install selenium pytest
 """
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
