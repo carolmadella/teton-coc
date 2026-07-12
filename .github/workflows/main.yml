@@ -50,9 +50,16 @@ jobs:
         port: 5500
         index-files: |
           ["index.html", "index.htm"]           
-    - name: Run tests
+    - name: Start Django 
       run: |
-        pytest
+        cd directorydata_service
+        python manage.py runserver --noreload &
+
+    - name: Run tests
+      env:
+        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      run: |
+        pytest -q tests
 
   analyze:
     needs: build
